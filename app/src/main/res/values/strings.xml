@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BooleanLogicGame</string>
+    <string name="playButton">Play</string>
+    <string name="submitAnswer">Submit</string>
 </resources>
