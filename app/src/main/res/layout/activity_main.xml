@@ -1,80 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:background="@color/colorBackground"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="337dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="134dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Boologic"
+        android:textColor="@android:color/black"
+        android:textSize="35sp" />
 
-        <Button
-            android:id="@+id/game_button1"
-            android:layout_width="295px"
-            android:layout_height="295px"
-            android:background="@android:color/holo_green_dark"
-            tools:layout_editor_absoluteX="47dp"
-            tools:layout_editor_absoluteY="16dp" />
+    <TextView
+        android:id="@+id/text_view_highscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button_play"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:text="Highscore: 0"
+        android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/game_button2"
-            android:layout_width="295px"
-            android:layout_height="295px"
-            android:background="@android:color/holo_green_dark"
-            android:layout_marginLeft="26dp"
-            tools:layout_editor_absoluteX="47dp"
-            tools:layout_editor_absoluteY="16dp" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/button_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Play" />
 
-    <LinearLayout
-        android:layout_width="384px"
-        android:layout_height="85px"
-        android:layout_marginStart="192dp"
-        android:layout_marginLeft="192dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+    <Button
+        android:id="@+id/button_quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quit" />
 
-        <Button
-            android:id="@+id/start_game"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/white"
-            android:text="@string/playButton"
-            tools:layout_editor_absoluteX="101dp"
-            tools:layout_editor_absoluteY="457dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="384px"
-        android:layout_height="85px"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/submit_answer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/white"
-            android:text="@string/submitAnswer"
-            tools:layout_editor_absoluteX="101dp"
-            tools:layout_editor_absoluteY="457dp" />
-    </LinearLayout>
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
