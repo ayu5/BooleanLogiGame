@@ -33,12 +33,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Play" />
+        android:text="Play"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:background="@drawable/playbuttonstyle" />
 
     <Button
         android:id="@+id/button_quit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quit" />
+
 
 </RelativeLayout>
