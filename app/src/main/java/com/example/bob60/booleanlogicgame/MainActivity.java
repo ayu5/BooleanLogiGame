@@ -20,6 +20,15 @@ public class MainActivity extends AppCompatActivity {
                 startGame();
             }
         });
+
+        Button buttonPressQuit = findViewById(R.id.button_quit);
+        buttonPressQuit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                System.exit(0);
+            }
+        });
     }
 
     private void startGame() {
