@@ -14,7 +14,7 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
     }
 
-    protected static String getQuestion1() {
+    protected static Object[] getQuestion1() {
         Random rand = new Random();
 
         String[] questions = new String[] {"1", "2", "Red", "Blue"};
@@ -28,10 +28,12 @@ public class Main2Activity extends AppCompatActivity {
         String question = questions[randNum];
         String[] answer = answers[randNum];
 
-        return question;
+        Object[] toReturn = new Object[] {question, answer};
+
+        return toReturn;
     }
 
-    protected static String getQuestion2() {
+    protected static Object[] getQuestion2() {
         Random rand = new Random();
 
         String[] questions = new String[] {"Blue & 1", "Blue & 2", "Red & 1", "Red & 2"};
@@ -45,10 +47,12 @@ public class Main2Activity extends AppCompatActivity {
         String question = questions[randNum];
         String[] answer = answers[randNum];
 
-        return question;
+        Object[] toReturn = new Object[] {question, answer};
+
+        return toReturn;
     }
 
-    protected static String getQuestion3() {
+    protected static Object[] getQuestion3() {
         Random rand = new Random();
 
         String[] questions = new String[] {"Blue", "Red", "Yellow", "1", "2", "3"};
@@ -64,10 +68,12 @@ public class Main2Activity extends AppCompatActivity {
         String question = questions[randNum];
         String[] answer = answers[randNum];
 
-        return question;
+        Object[] toReturn = new Object[] {question, answer};
+
+        return toReturn;
     }
 
-    protected static String getQuestion4() {
+    protected static Object[] getQuestion4() {
         Random rand = new Random();
 
         String[] questions = new String[] {
@@ -83,10 +89,12 @@ public class Main2Activity extends AppCompatActivity {
         String question = questions[randNum];
         String[] answer = answers[randNum];
 
-        return question;
+        Object[] toReturn = new Object[] {question, answer};
+
+        return toReturn;
     }
 
-    protected static String getQuestion5() {
+    protected static Object[] getQuestion5() {
         Random rand = new Random();
 
         String[] questions = new String[] {
@@ -108,10 +116,12 @@ public class Main2Activity extends AppCompatActivity {
         String question = questions[randNum];
         String[] answer = answers[randNum];
 
-        return question;
+        Object[] toReturn = new Object[] {question, answer};
+
+        return toReturn;
     }
 
-    protected static String getQuestion6() {
+    protected static Object[] getQuestion6() {
         Random rand = new Random();
 
         String[] questions = new String[] {
@@ -132,11 +142,12 @@ public class Main2Activity extends AppCompatActivity {
         int randNum = rand.nextInt(questions.length);
         String question = questions[randNum];
         String[] answer = answers[randNum];
+        Object[] toReturn = new Object[] {question, answer};
 
-        return question;
+        return toReturn;
     }
 
-    protected static String getQuestion7() {
+    protected static Object[] getQuestion7() {
         Random rand = new Random();
 
         String[] questions = new String[] {
@@ -158,7 +169,9 @@ public class Main2Activity extends AppCompatActivity {
         String question = questions[randNum];
         String[] answer = answers[randNum];
 
-        return question;
+        Object[] toReturn = new Object[] {question, answer};
+
+        return toReturn;
     }
 
     public static void main(String[] args) {
