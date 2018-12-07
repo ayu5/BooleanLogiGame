@@ -23,7 +23,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/Question"
-            android:textSize="35sp"
+            android:textStyle="bold"
+            android:textSize="45sp"
+            android:textColor="@color/colorNumber"
             android:layout_marginTop="5dp"/>
     </LinearLayout>
 

@@ -47,7 +47,7 @@ public class PtestActivity extends AppCompatActivity {
     }
 
     private void advance() {
-        Intent intent = new Intent(PtestActivity.this, Main2Activity.class);
+        Intent intent = new Intent(PtestActivity.this, P1testActivity.class);
         startActivity(intent);
     }
     private void gameOver() {
