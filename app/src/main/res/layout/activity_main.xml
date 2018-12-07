@@ -16,7 +16,17 @@
         android:layout_marginTop="30dp"
         android:text="Boologic"
         android:textColor="@android:color/black"
-        android:textSize="35sp" />
+        android:textSize="65sp" />
+
+    <TextView
+        android:id="@+id/text_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button_play"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="95dp"
+        android:text="A Simple Logic Math Game"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/text_view_highscore"
@@ -35,14 +45,32 @@
         android:layout_centerInParent="true"
         android:text="Play"
         android:textStyle="bold"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:textSize="20dp"
         android:background="@drawable/playbuttonstyle" />
+
+    <Button
+        android:id="@+id/button_practice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_play"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/playbuttonstyle"
+        android:text="Practice Mode"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/button_quit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="21dp"
         android:text="Quit" />
 
 
