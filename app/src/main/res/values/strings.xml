@@ -5,4 +5,5 @@
     <string name="Timer">Time Left</string>
     <string name="Score">Score:</string>
     <string name="Question"><![CDATA[1 & Blue]]></string>
+    <string name="pQuestion1">3</string>
 </resources>
