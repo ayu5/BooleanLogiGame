@@ -21,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button buttonPracticeMode = findViewById(R.id.button_practice);
+        buttonPracticeMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startPractice();
+            }
+        });
+
         Button buttonPressQuit = findViewById(R.id.button_quit);
         buttonPressQuit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void startPractice() {
+        Intent intent = new Intent(MainActivity.this, PtestActivity.class);
+        startActivity(intent);
+    }
 
 
 }

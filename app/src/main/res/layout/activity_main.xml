@@ -50,6 +50,18 @@
         android:background="@drawable/playbuttonstyle" />
 
     <Button
+        android:id="@+id/button_practice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_play"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/playbuttonstyle"
+        android:text="Practice Mode"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <Button
         android:id="@+id/button_quit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
