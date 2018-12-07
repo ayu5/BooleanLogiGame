@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/Question"
-            android:textSize="35sp"
+            android:textSize="45sp"
             android:layout_marginTop="5dp"/>
     </LinearLayout>
 
@@ -34,26 +34,24 @@
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editText2"
+        <TextView
+            android:id="@+id/textView2"
             style="@style/Widget.AppCompat.EditText"
             android:layout_width="25dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="text|number"
             android:text="@string/Score"
             tools:targetApi="o" />
 
-        <EditText
-            android:id="@+id/editText"
+        <TextView
+            android:id="@+id/textView3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="text|number"
             android:text="@string/Timer"
             tools:targetApi="o" />
     </LinearLayout>
@@ -73,34 +71,40 @@
         android:gravity="center_horizontal">
 
         <CheckBox
-            android:text="1"
-            android:textSize="50dp"
+            android:text="@string/_1"
+            android:textSize="50sp"
             android:id="@+id/game_button1"
             android:layout_width="95dp"
             android:layout_height="match_parent"
             android:background="@android:color/holo_blue_dark"
+            android:theme="@style/checkBoxStyle"
+            android:textColor="#000000"
             style="?android:attr/buttonBarButtonStyle" />
 
         <CheckBox
-            android:text="2"
-            android:textSize="50dp"
+            android:text="@string/_2"
+            android:textSize="50sp"
             android:id="@+id/game_button2"
             android:layout_width="95dp"
             android:layout_height="match_parent"
             android:layout_marginStart="33dp"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="33dp"
             android:background="#FFFF33"
+            android:theme="@style/checkBoxStyle"
+            android:textColor="#000000"
             style="?android:attr/buttonBarButtonStyle" />
 
         <CheckBox
-            android:text="3"
-            android:textSize="50dp"
+            android:text="@string/_3"
+            android:textSize="50sp"
             android:id="@+id/game_button3"
             android:layout_width="95dp"
             android:layout_height="match_parent"
             android:layout_marginStart="33dp"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="33dp"
             android:background="@android:color/holo_red_dark"
+            android:theme="@style/checkBoxStyle"
+            android:textColor="#000000"
             style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
@@ -118,38 +122,45 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        android:gravity="center_horizontal"
         tools:targetApi="o">
 
 
         <CheckBox
-            android:text="3"
-            android:textSize="50dp"
+            android:text="@string/_3"
+            android:textSize="50sp"
             android:id="@+id/game_button4"
             android:layout_width="95dp"
             android:layout_height="match_parent"
             android:background="@android:color/holo_blue_dark"
+            android:theme="@style/checkBoxStyle"
+            android:textColor="#000000"
             style="?android:attr/buttonBarButtonStyle" />
 
         <CheckBox
-            android:text="3"
-            android:textSize="50dp"
+            android:text="@string/_3"
+            android:textSize="50sp"
             android:id="@+id/game_button5"
             android:layout_width="95dp"
             android:layout_height="match_parent"
             android:layout_marginStart="33dp"
             android:layout_marginLeft="26dp"
             android:background="#FFFF33"
+            android:theme="@style/checkBoxStyle"
+            android:textColor="#000000"
             style="?android:attr/buttonBarButtonStyle" />
 
         <CheckBox
-            android:text="1"
-            android:textSize="50dp"
+            android:text="@string/_1"
+            android:textSize="50sp"
             android:id="@+id/game_button6"
             android:layout_width="95dp"
             android:layout_height="match_parent"
             android:layout_marginStart="33dp"
             android:layout_marginLeft="26dp"
             android:background="@android:color/holo_red_dark"
+            android:theme="@style/checkBoxStyle"
+            android:textColor="#000000"
             style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
@@ -166,37 +177,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        android:gravity="center_horizontal"
         tools:targetApi="o">
 
         <CheckBox
-            android:text="2"
-            android:textSize="50dp"
+            android:text="@string/_2"
+            android:textSize="50sp"
             android:id="@+id/game_button7"
             android:layout_width="95dp"
             android:layout_height="match_parent"
             android:background="@android:color/holo_blue_dark"
+            android:theme="@style/checkBoxStyle"
+            android:textColor="#000000"
             style="?android:attr/buttonBarButtonStyle" />
 
         <CheckBox
-            android:text="1"
-            android:textSize="50dp"
+            android:text="@string/_1"
+            android:textSize="50sp"
             android:id="@+id/game_button8"
             android:layout_width="95dp"
             android:layout_height="match_parent"
             android:layout_marginStart="33dp"
             android:layout_marginLeft="26dp"
             android:background="#FFFF33"
+            android:theme="@style/checkBoxStyle"
+            android:textColor="#000000"
             style="?android:attr/buttonBarButtonStyle" />
 
         <CheckBox
-            android:text="2"
-            android:textSize="50dp"
+            android:text="@string/_2"
+            android:textSize="50sp"
             android:id="@+id/game_button9"
             android:layout_width="95dp"
             android:layout_height="match_parent"
             android:layout_marginStart="33dp"
             android:layout_marginLeft="26dp"
             android:background="@android:color/holo_red_dark"
+            android:theme="@style/checkBoxStyle"
+            android:textColor="#000000"
             style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
