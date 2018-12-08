@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#D81B60</color>
     <color name="ourYellowTile">#FFFF33</color>
     <color name="ourBlueTile">@android:color/holo_blue_dark</color>
     <color name="ourRedTile">@android:color/holo_red_dark</color>
     <color name="colorNumber">#000000</color>
 
-    <color name="colorBackground">#BCAAA4</color>
+    <color name="colorBackground">#dad7d6</color>
 </resources>
