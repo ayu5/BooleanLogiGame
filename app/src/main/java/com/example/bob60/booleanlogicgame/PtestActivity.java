@@ -79,11 +79,18 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     }
 
     @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ptest);
         GestureDetect = new GestureDetectorCompat(this,this);
         GestureDetect.setOnDoubleTapListener(this);
+
+
 
         TextView questionText = findViewById(R.id.textView);
 
