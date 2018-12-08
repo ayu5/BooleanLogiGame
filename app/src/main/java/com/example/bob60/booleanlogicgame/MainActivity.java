@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startGame() {
-        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+        Intent intent = new Intent(MainActivity.this, PtestActivity.class);
         startActivity(intent);
     }
 
@@ -48,6 +48,4 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, PtestActivity.class);
         startActivity(intent);
     }
-
-
 }
