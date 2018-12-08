@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startPractice() {
-        Intent intent = new Intent(MainActivity.this, PtestActivity.class);
+        Intent intent = new Intent(MainActivity.this, P1testActivity.class);
         startActivity(intent);
     }
 

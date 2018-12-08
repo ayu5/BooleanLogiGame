@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:text="@string/Question"
             android:textStyle="bold"
-            android:textSize="45sp"
+            android:textSize="40sp"
             android:textColor="@color/colorNumber"
             android:layout_marginTop="5dp"/>
     </LinearLayout>
@@ -36,27 +36,21 @@
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editText2"
-            style="@style/Widget.AppCompat.EditText"
+        <TextView
+            android:id="@+id/text_view_score"
             android:layout_width="25dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:autofillHints=""
-            android:ems="10"
-            android:inputType="text|number"
-            android:text="@string/Score"
-            tools:targetApi="o" />
+            android:textSize="30dp"
+            android:text="Score: --"/>
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/text_view_countdown"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:autofillHints=""
-            android:ems="10"
-            android:inputType="text|number"
-            android:text="@string/Timer"
+            android:text="99:99"
+            android:textSize="40sp"
             tools:targetApi="o" />
     </LinearLayout>
 
