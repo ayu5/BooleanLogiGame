@@ -1,6 +1,8 @@
 package com.example.bob60.booleanlogicgame;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.os.CountDownTimer;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +21,20 @@ import java.util.Random;
 import java.util.Arrays;
 
 public class PtestActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+
+    public static final String MY_SCORE = "myScore";
+    private static final long COUNTDOWN_IN_MILLIS = 10000;
+
+    private TextView textViewScore;
+    private TextView textViewCountDown;
+    private int score;
+    private long backPressedTime;
+
+    private ColorStateList textColorDefaultCd;
+
+    private CountDownTimer countDownTimer;
+    private long timeLeftInMillis;
+
     protected String[][] boardStrings = new String[][] {
             {"blue1", "yellow2", "red3"},
             {"blue3", "yellow3", "red1"},
@@ -87,6 +103,13 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ptest);
+
+        textViewScore = findViewById(R.id.text_view_score);
+        textViewCountDown = findViewById(R.id.text_view_countdown);
+
+        textColorDefaultCd = textViewCountDown.getTextColors();
+
+
         GestureDetect = new GestureDetectorCompat(this,this);
         GestureDetect.setOnDoubleTapListener(this);
 
@@ -135,6 +158,8 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
                         {ans7.isChecked(), ans8.isChecked(), ans9.isChecked()}};
 
                 if (Arrays.deepEquals(playerAnswers, boolAnswers)) {
+                    score++;
+                    textViewScore.setText("Score: " + score);
                     advance();
                 } else {
                     gameOver();
@@ -149,8 +174,18 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         startActivity(intent);
     }
     private void gameOver() {
-        Intent intent = new Intent(PtestActivity.this, MainActivity.class);
-        startActivity(intent);
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra(MY_SCORE, score);
+        setResult(RESULT_OK, resultIntent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            gameOver();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 
 }
