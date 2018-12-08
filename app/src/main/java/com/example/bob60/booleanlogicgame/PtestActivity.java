@@ -32,7 +32,6 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     private int score;
     private long backPressedTime;
 
-    private boolean clicked = false;
 
     private ColorStateList textColorDefaultCd;
 
@@ -159,7 +158,6 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         pressSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicked = true;
                 boolean[][] playerAnswers = {
                         {ans1.isChecked(), ans2.isChecked(), ans3.isChecked()},
                         {ans4.isChecked(), ans5.isChecked(), ans6.isChecked()},

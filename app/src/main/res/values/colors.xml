@@ -8,5 +8,5 @@
     <color name="ourRedTile">@android:color/holo_red_dark</color>
     <color name="colorNumber">#000000</color>
 
-    <color name="colorBackground">#BCAAA4</color>
+    <color name="colorBackground">#dad7d6</color>
 </resources>
