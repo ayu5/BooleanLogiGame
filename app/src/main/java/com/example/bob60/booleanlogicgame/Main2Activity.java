@@ -1,18 +1,27 @@
 package com.example.bob60.booleanlogicgame;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.sql.SQLOutput;
+import java.util.Locale;
 import java.util.Random;
 
 public class Main2Activity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
     }
+
+
 
     public static Object[] getQuestion(int num) {
         switch (num) {
@@ -30,6 +39,7 @@ public class Main2Activity extends AppCompatActivity {
                 return getQuestion4();
         }
     }
+
 
     protected static Object[] getQuestion0() {
         Random rand = new Random();

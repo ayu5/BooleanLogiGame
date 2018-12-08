@@ -2,6 +2,7 @@ package com.example.bob60.booleanlogicgame;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Locale;
 import java.util.Random;
 import java.util.Arrays;
 
@@ -30,10 +32,12 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     private int score;
     private long backPressedTime;
 
+    private boolean clicked = false;
+
     private ColorStateList textColorDefaultCd;
 
     private CountDownTimer countDownTimer;
-    private long timeLeftInMillis;
+    private long timeLeftInMillis = COUNTDOWN_IN_MILLIS;
 
     protected String[][] boardStrings = new String[][] {
             {"blue1", "yellow2", "red3"},
@@ -148,14 +152,20 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         final CheckBox ans8 = findViewById(R.id.game_button8);
         final CheckBox ans9 = findViewById(R.id.game_button9);
 
+        startCountDown();
+
+
         Button pressSubmit = findViewById(R.id.submit_answer);
         pressSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clicked = true;
                 boolean[][] playerAnswers = {
                         {ans1.isChecked(), ans2.isChecked(), ans3.isChecked()},
                         {ans4.isChecked(), ans5.isChecked(), ans6.isChecked()},
                         {ans7.isChecked(), ans8.isChecked(), ans9.isChecked()}};
+
+                countDownTimer.cancel();
 
                 if (Arrays.deepEquals(playerAnswers, boolAnswers)) {
                     score++;
@@ -166,6 +176,7 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
                 }
             }
         });
+
     }
 
     private void advance() {
@@ -180,6 +191,38 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         finish();
     }
 
+    private void startCountDown() {
+        countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                timeLeftInMillis = 0;
+                updateCountDownText();
+                gameOver();
+            }
+        }.start();
+    }
+
+    private void updateCountDownText() {
+        int minutes = (int) (timeLeftInMillis / 1000) / 60;
+        int seconds = (int) (timeLeftInMillis / 1000) % 60;
+
+        String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+
+        textViewCountDown.setText(timeFormatted);
+
+        if (timeLeftInMillis < 5000) {
+            textViewCountDown.setTextColor(Color.RED);
+        } else {
+            textViewCountDown.setTextColor(textColorDefaultCd);
+        }
+    }
+
     @Override
     public void onBackPressed() {
         if (backPressedTime + 2000 > System.currentTimeMillis()) {
@@ -188,4 +231,11 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         backPressedTime = System.currentTimeMillis();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+    }
 }
