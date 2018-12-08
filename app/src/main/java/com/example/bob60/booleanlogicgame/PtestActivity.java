@@ -80,6 +80,7 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        GestureDetect.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
 
