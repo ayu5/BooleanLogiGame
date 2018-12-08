@@ -19,7 +19,6 @@ import java.util.Random;
 import java.util.Arrays;
 
 public class PtestActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
-    TextView questionText = findViewById(R.id.textView);
     protected String[][] boardStrings = new String[][] {
             {"blue1", "yellow2", "red3"},
             {"blue3", "yellow3", "red1"},
@@ -28,49 +27,54 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     private GestureDetectorCompat GestureDetect;
     @Override
     public boolean onDown(MotionEvent e) {
-        questionText.setText("onDown");
+        Log.i("a", "a");
         return false;
     }
 
     @Override
     public void onShowPress(MotionEvent e) {
-        questionText.setText("onShowPress");
+        Log.i("a", "a");
     }
 
     @Override
     public boolean onSingleTapUp(MotionEvent e) {
-        questionText.setText("onSingleTapUp");
+        Log.i("a", "a");
         return false;
     }
 
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        questionText.setText("onScroll");
+        Log.i("a", "a");
         return false;
     }
 
     @Override
     public void onLongPress(MotionEvent e) {
+        Log.i("a", "a");
         advance();
     }
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        Log.i("a", "a");
         return false;
     }
 
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
+        Log.i("a", "a");
         return false;
     }
 
     @Override
     public boolean onDoubleTap(MotionEvent e) {
+        Log.i("a", "a");
         return false;
     }
 
     @Override
     public boolean onDoubleTapEvent(MotionEvent e) {
+        Log.i("a", "a");
         return false;
     }
 
@@ -80,6 +84,8 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         setContentView(R.layout.activity_ptest);
         GestureDetect = new GestureDetectorCompat(this,this);
         GestureDetect.setOnDoubleTapListener(this);
+
+        TextView questionText = findViewById(R.id.textView);
 
         Random rand = new Random();
         int questionNum = rand.nextInt(5);
@@ -121,14 +127,9 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
                         {ans4.isChecked(), ans5.isChecked(), ans6.isChecked()},
                         {ans7.isChecked(), ans8.isChecked(), ans9.isChecked()}};
 
-                Log.i("Me", Arrays.deepToString(boolAnswers));
-                Log.i("Player", Arrays.deepToString(playerAnswers));
-
                 if (Arrays.deepEquals(playerAnswers, boolAnswers)) {
-                    Log.i("a", "a");
                     advance();
                 } else {
-                    Log.i("b", "b");
                     gameOver();
                 }
             }
