@@ -1,6 +1,9 @@
 package com.example.bob60.booleanlogicgame;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,10 +18,26 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Locale;
 import java.util.Random;
 import java.util.Arrays;
 
 public class PtestActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+
+    public static final String MY_SCORE = "myScore";
+    private static final long COUNTDOWN_IN_MILLIS = 10000;
+
+    private TextView textViewScore;
+    private TextView textViewCountDown;
+    private int score;
+    private long backPressedTime;
+
+
+    private ColorStateList textColorDefaultCd;
+
+    private CountDownTimer countDownTimer;
+    private long timeLeftInMillis = COUNTDOWN_IN_MILLIS;
+
     protected String[][] boardStrings = new String[][] {
             {"blue1", "yellow2", "red3"},
             {"blue3", "yellow3", "red1"},
@@ -88,6 +107,13 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ptest);
+
+        textViewScore = findViewById(R.id.text_view_score);
+        textViewCountDown = findViewById(R.id.text_view_countdown);
+
+        textColorDefaultCd = textViewCountDown.getTextColors();
+
+
         GestureDetect = new GestureDetectorCompat(this,this);
         GestureDetect.setOnDoubleTapListener(this);
 
@@ -126,6 +152,9 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         final CheckBox ans8 = findViewById(R.id.game_button8);
         final CheckBox ans9 = findViewById(R.id.game_button9);
 
+        startCountDown();
+
+
         Button pressSubmit = findViewById(R.id.submit_answer);
         pressSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,13 +164,18 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
                         {ans4.isChecked(), ans5.isChecked(), ans6.isChecked()},
                         {ans7.isChecked(), ans8.isChecked(), ans9.isChecked()}};
 
+                countDownTimer.cancel();
+
                 if (Arrays.deepEquals(playerAnswers, boolAnswers)) {
+                    score++;
+                    textViewScore.setText("Score: " + score);
                     advance();
                 } else {
                     gameOver();
                 }
             }
         });
+
     }
 
     private void advance() {
@@ -150,8 +184,57 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         startActivity(intent);
     }
     private void gameOver() {
-        Intent intent = new Intent(PtestActivity.this, MainActivity.class);
-        startActivity(intent);
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra(MY_SCORE, score);
+        setResult(RESULT_OK, resultIntent);
+        finish();
     }
 
+    private void startCountDown() {
+        countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                timeLeftInMillis = 0;
+                updateCountDownText();
+                gameOver();
+            }
+        }.start();
+    }
+
+    private void updateCountDownText() {
+        int minutes = (int) (timeLeftInMillis / 1000) / 60;
+        int seconds = (int) (timeLeftInMillis / 1000) % 60;
+
+        String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+
+        textViewCountDown.setText(timeFormatted);
+
+        if (timeLeftInMillis < 5000) {
+            textViewCountDown.setTextColor(Color.RED);
+        } else {
+            textViewCountDown.setTextColor(textColorDefaultCd);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            gameOver();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+    }
 }
