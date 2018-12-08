@@ -108,7 +108,6 @@ public class P1testActivity extends AppCompatActivity implements GestureDetector
 
         //textViewScore = findViewById(R.id.text_view_score);
         //textViewCountDown = findViewById(R.id.text_view_countdown);
-
         //textColorDefaultCd = textViewCountDown.getTextColors();
 
 
