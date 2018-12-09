@@ -1,8 +1,13 @@
 package com.example.bob60.booleanlogicgame;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.CountDownTimer;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -15,20 +20,16 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
 import java.util.Arrays;
-import java.util.Set;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
-public class PtestActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+public class PtestActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener, SensorEventListener {
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String MY_SCORE = "myScore";
@@ -77,7 +78,6 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     @Override
     public void onLongPress(MotionEvent e) {
         Log.i("a", "a");
-        advance();
     }
 
     @Override
@@ -115,11 +115,23 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ptest);
 
+        // ShakeDetector initialization
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager
+                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
+        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeListener() {
+
+            @Override
+            public void onShake(int count) {
+                advance();
+            }
+        });
+
         textViewScore = findViewById(R.id.text_view_score);
         textViewCountDown = findViewById(R.id.text_view_countdown);
 
         textColorDefaultCd = textViewCountDown.getTextColors();
-
 
         GestureDetect = new GestureDetectorCompat(this,this);
         GestureDetect.setOnDoubleTapListener(this);
@@ -164,7 +176,6 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         final CheckBox ans9 = findViewById(R.id.game_button9);
 
         startCountDown();
-
 
         Button pressSubmit = findViewById(R.id.submit_answer);
         pressSubmit.setOnClickListener(new View.OnClickListener() {
@@ -236,5 +247,27 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         } else {
             textViewCountDown.setTextColor(textColorDefaultCd);
         }
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mSensorManager.registerListener(mShakeDetector, mAccelerometer,	SensorManager.SENSOR_DELAY_UI);
+    }
+
+    @Override
+    public void onPause() {
+        mSensorManager.unregisterListener(mShakeDetector);
+        super.onPause();
     }
 }
