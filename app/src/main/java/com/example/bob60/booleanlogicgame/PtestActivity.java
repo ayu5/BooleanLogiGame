@@ -13,23 +13,30 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 import java.util.Arrays;
+import java.util.Set;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
 public class PtestActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
 
+    public static final String SHARED_PREFS = "sharedPrefs";
     public static final String MY_SCORE = "myScore";
     private static final long COUNTDOWN_IN_MILLIS = 10000;
 
     private TextView textViewScore;
     private TextView textViewCountDown;
-    private int score;
+    protected static Integer score = 0;
     private long backPressedTime;
 
 
@@ -117,7 +124,11 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         GestureDetect = new GestureDetectorCompat(this,this);
         GestureDetect.setOnDoubleTapListener(this);
 
-
+        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        score = prefs.getInt(MY_SCORE, 0);
+        String text = "Score: " + score;
+        Log.i("score", text);
+        textViewScore.setText("Score: " + score);
 
         TextView questionText = findViewById(R.id.textView);
 
@@ -168,7 +179,12 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
 
                 if (Arrays.deepEquals(playerAnswers, boolAnswers)) {
                     score++;
-                    textViewScore.setText("Score: " + score);
+
+                    SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt(MY_SCORE, score);
+                    editor.apply();
+
                     advance();
                 } else {
                     gameOver();
@@ -219,22 +235,6 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
             textViewCountDown.setTextColor(Color.RED);
         } else {
             textViewCountDown.setTextColor(textColorDefaultCd);
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            gameOver();
-        }
-        backPressedTime = System.currentTimeMillis();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
         }
     }
 }
