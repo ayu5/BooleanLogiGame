@@ -14,4 +14,12 @@
     <string name="_blue">Blue</string>
     <string name="_red">Red</string>
     <string name="_yellow">Yellow</string>
+    <string name="_hint">Discover Hidden Features by Trying Different Gestures</string>
+    <string name="boologic">Boologic</string>
+    <string name="highscore_0">Highscore: 0</string>
+    <string name="play">Play</string>
+    <string name="practice_mode">Practice Mode</string>
+    <string name="quit">Quit</string>
+    <string name="a_simple_math_logic_game">A Simple Math Logic Game</string>
+    <string name="reset">Reset</string>
 </resources>

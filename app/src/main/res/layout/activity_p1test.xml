@@ -11,7 +11,7 @@
         android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
         android:layout_height="63dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
         android:layout_centerInParent="true"
@@ -38,17 +38,16 @@
 
         <TextView
             android:id="@+id/text_view_score"
-            android:layout_width="25dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="40sp"
             android:layout_weight="1"
-            android:textSize="30dp"
-            android:text="Score: --"/>
+            android:text="Score: 0"/>
 
         <TextView
             android:id="@+id/text_view_countdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="99:99"
             android:textSize="40sp"
             tools:targetApi="o" />
@@ -59,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="95dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="15dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -208,9 +207,11 @@
 
         <Button
             android:id="@+id/submit_answer"
+            android:background="#ac9e6d"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/submitAnswer"
+            android:textSize="30sp"
             tools:layout_editor_absoluteX="101dp"
             tools:layout_editor_absoluteY="457dp" />
     </LinearLayout>

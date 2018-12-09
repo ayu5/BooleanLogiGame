@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="Boologic"
+        android:text="@string/boologic"
         android:textColor="@android:color/black"
         android:textSize="65sp" />
 
@@ -25,7 +25,7 @@
         android:layout_above="@id/button_play"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="95dp"
-        android:text="A Simple Logic Math Game"
+        android:text="@string/a_simple_math_logic_game"
         android:textSize="20sp" />
 
     <TextView
@@ -35,7 +35,7 @@
         android:layout_above="@id/button_play"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
-        android:text="Highscore: 0"
+        android:text="@string/highscore_0"
         android:textSize="20sp" />
 
     <Button
@@ -43,10 +43,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Play"
+        android:text="@string/play"
         android:textStyle="bold"
         android:textColor="#000000"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:background="@drawable/playbuttonstyle" />
 
     <Button
@@ -56,10 +56,21 @@
         android:layout_below="@+id/button_play"
         android:layout_centerHorizontal="true"
         android:background="@drawable/playbuttonstyle"
-        android:text="Practice Mode"
+        android:text="@string/practice_mode"
         android:textColor="#000000"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button_play"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-200dp"
+        android:text="@string/_hint"
+        android:gravity="center"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/button_quit"
@@ -71,7 +82,7 @@
         android:layout_marginEnd="19dp"
         android:layout_marginRight="19dp"
         android:layout_marginBottom="21dp"
-        android:text="Quit" />
+        android:text="@string/quit" />
 
     <Button
         android:id="@+id/button_resetScore"
@@ -80,9 +91,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="210dp"
+        android:layout_marginRight="222dp"
+        android:layout_marginEnd="222dp"
         android:layout_marginBottom="21dp"
-        android:text="Reset" />
+        android:text="@string/reset" />
 
 
 </RelativeLayout>
