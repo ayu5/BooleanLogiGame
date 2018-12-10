@@ -1,8 +1,12 @@
 package com.example.bob60.booleanlogicgame;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.os.CountDownTimer;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +33,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 public class PtestActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String MY_SCORE = "myScore";
@@ -71,6 +79,7 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         Log.i("a", "a");
+        countDownTimer.cancel();
         return false;
     }
 
@@ -114,6 +123,20 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ptest);
+
+        // ShakeDetector initialization
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager
+                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
+        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeListener() {
+
+            @Override
+            public void onShake(int count) {
+                advance();
+            }
+        });
+
 
         textViewScore = findViewById(R.id.text_view_score);
         textViewCountDown = findViewById(R.id.text_view_countdown);
@@ -244,5 +267,26 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
             gameOver();
         }
         backPressedTime = System.currentTimeMillis();
+    }
+    //@Override
+    //public void onSensorChanged(SensorEvent event) {
+
+    //}
+
+    //@Override
+    //public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    //}
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mSensorManager.registerListener(mShakeDetector, mAccelerometer,	SensorManager.SENSOR_DELAY_UI);
+    }
+
+    @Override
+    public void onPause() {
+        mSensorManager.unregisterListener(mShakeDetector);
+        super.onPause();
     }
 }
