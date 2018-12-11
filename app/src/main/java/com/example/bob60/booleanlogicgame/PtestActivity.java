@@ -227,6 +227,7 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         resultIntent.putExtra(MY_SCORE, score);
         setResult(RESULT_OK, resultIntent);
         finish();
+        TryAgain();
     }
 
     private void startCountDown() {
@@ -288,5 +289,10 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     public void onPause() {
         mSensorManager.unregisterListener(mShakeDetector);
         super.onPause();
+    }
+
+    private void TryAgain() {
+        Intent intent = new Intent(PtestActivity.this, TryAgainActivity.class);
+        startActivity(intent);
     }
 }
