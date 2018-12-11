@@ -6,7 +6,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.CountDownTimer;
 import android.support.v4.view.GestureDetectorCompat;
@@ -20,13 +19,21 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 import java.util.Arrays;
+import java.util.Set;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
-public class PtestActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener, SensorEventListener {
+public class PtestActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
@@ -72,12 +79,14 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         Log.i("a", "a");
+        countDownTimer.cancel();
         return false;
     }
 
     @Override
     public void onLongPress(MotionEvent e) {
         Log.i("a", "a");
+        advance();
     }
 
     @Override
@@ -128,10 +137,12 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
             }
         });
 
+
         textViewScore = findViewById(R.id.text_view_score);
         textViewCountDown = findViewById(R.id.text_view_countdown);
 
         textColorDefaultCd = textViewCountDown.getTextColors();
+
 
         GestureDetect = new GestureDetectorCompat(this,this);
         GestureDetect.setOnDoubleTapListener(this);
@@ -177,6 +188,7 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
 
         startCountDown();
 
+
         Button pressSubmit = findViewById(R.id.submit_answer);
         pressSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -215,6 +227,7 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         resultIntent.putExtra(MY_SCORE, score);
         setResult(RESULT_OK, resultIntent);
         finish();
+        TryAgain();
     }
 
     private void startCountDown() {
@@ -250,14 +263,21 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     }
 
     @Override
-    public void onSensorChanged(SensorEvent event) {
-
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            gameOver();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
+    //@Override
+    //public void onSensorChanged(SensorEvent event) {
 
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    //}
 
-    }
+    //@Override
+    //public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    //}
 
     @Override
     public void onResume() {
@@ -269,5 +289,10 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     public void onPause() {
         mSensorManager.unregisterListener(mShakeDetector);
         super.onPause();
+    }
+
+    private void TryAgain() {
+        Intent intent = new Intent(PtestActivity.this, TryAgainActivity.class);
+        startActivity(intent);
     }
 }

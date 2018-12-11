@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bob60.booleanlogicgame">
 
-    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -21,6 +23,7 @@
         <activity android:name=".Main2Activity" />
         <activity android:name=".PtestActivity" />
         <activity android:name=".P1testActivity" />
+        <activity android:name=".TryAgainActivity"></activity>
     </application>
 
 </manifest>
