@@ -116,7 +116,8 @@ public class Main2Activity extends AppCompatActivity {
         String[] questions = new String[] {
                 "Blue & not 1", "Blue & not 2", "Blue & not 3",
                 "Red & not 1", "Red & not 2", "Red & not 3",
-                "Yellow & not 1", "Yellow & not 2", "Yellow & not 3"};
+                "Yellow & not 1", "Yellow & not 2", "Yellow & not 3",
+                "not Blue and 2", "not Yellow or 3", "not Red or 1"};
         String[][] answers = new String[][] {
                 {"blue2", "blue3"},
                 {"blue1", "blue3"},
@@ -126,7 +127,10 @@ public class Main2Activity extends AppCompatActivity {
                 {"red1", "red2"},
                 {"yellow2", "yellow3"},
                 {"yellow1", "yellow3"},
-                {"yellow1", "yellow2"}};
+                {"yellow1", "yellow2"},
+                {"yellow2", "red2"},
+                {"red3", "blue3"},
+                {"yellow1", "blue1"}};
 
         int randNum = rand.nextInt(questions.length);
         String question = questions[randNum];
@@ -162,6 +166,8 @@ public class Main2Activity extends AppCompatActivity {
 
         return toReturn;
     }
+
+
 
     public static void main(String[] args) {
         System.out.println(getQuestion1());

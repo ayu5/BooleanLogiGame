@@ -79,19 +79,19 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         Log.i("a", "a");
-        countDownTimer.cancel();
+        advance();
         return false;
     }
 
     @Override
     public void onLongPress(MotionEvent e) {
         Log.i("a", "a");
-        advance();
     }
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
         Log.i("a", "a");
+        advance();
         return false;
     }
 
@@ -133,7 +133,7 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
 
             @Override
             public void onShake(int count) {
-                advance();
+                countDownTimer.cancel();;
             }
         });
 
@@ -227,7 +227,7 @@ public class PtestActivity extends AppCompatActivity implements GestureDetector.
         resultIntent.putExtra(MY_SCORE, score);
         setResult(RESULT_OK, resultIntent);
         finish();
-        TryAgain();
+        //TryAgain();
     }
 
     private void startCountDown() {
