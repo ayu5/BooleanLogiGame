@@ -26,14 +26,24 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(PtestActivity.MY_SCORE, 0);
-        editor.apply();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         textViewHighScore = findViewById(R.id.text_view_highscore);
+
+        int score = prefs.getInt(PtestActivity.MY_SCORE, 0);
+        Log.i("score", "score: " + score);
+        Log.i("high score", "high score: " + highscore);
+        if (score > highscore) {
+            updateHighScore(score);
+            Log.i("update", "updated");
+        }
+
         loadHighScore();
+
+        editor.putInt(PtestActivity.MY_SCORE, 0);
+        editor.apply();
 
         Button buttonPressPlay = findViewById(R.id.button_play);
         buttonPressPlay.setOnClickListener(new View.OnClickListener() {
