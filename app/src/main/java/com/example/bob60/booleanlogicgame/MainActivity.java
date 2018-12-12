@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textViewHighScore = findViewById(R.id.text_view_highscore);
-
+        highscore = prefs.getInt(KEY_HIGHSCORE, 0);
         int score = prefs.getInt(PtestActivity.MY_SCORE, 0);
         Log.i("score", "score: " + score);
         Log.i("high score", "high score: " + highscore);
